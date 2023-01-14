@@ -1,7 +1,7 @@
 import React from 'react';
 import {  View, Text, StyleSheet, TextInput} from "react-native";
-import {connect} from 'react-redux';
-import {increase, decrease} from '../redux/counterAction';
+import { connect } from 'react-redux';
+import { increment, decrement } from '../redux/slices/counterSlice';
 
 class Counter extends React.Component{
     
@@ -21,7 +21,7 @@ class Counter extends React.Component{
                 </Text>
 
                 <Text style={styles.text}>
-                    {this.props.counter.value}
+                    {this.props.counter.counter}
                 </Text>
 
                 <Text style={styles.text} 
@@ -35,7 +35,7 @@ class Counter extends React.Component{
     }
 }
 
-const mapStateToProps=state=>{
+const mapStateToProps = state => {
     return {
         counter: state.counter,
     };
@@ -44,11 +44,11 @@ const mapStateToProps=state=>{
 const mapDispatchToProps = dispatch => {
 	return{
         increaseTheValue : () => {
-            dispatch(increase());
+            dispatch(increment());
         },
 
         decreaseTheValue : () => {
-            dispatch(decrease());
+            dispatch(decrement());
         }
     }
 }
